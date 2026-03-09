@@ -1276,6 +1276,12 @@ footer{
   .passport-strip{grid-template-columns:1fr;gap:32px}
   .swatch-strip{grid-template-columns:repeat(3,1fr);height:auto}
   .swatch{height:80px}
+  /* Material Explorer — tablet */
+  .matx-trigger{padding:18px 40px}
+  .matx-tabs{padding:0 40px}
+  .matx-stage{padding:32px 40px}
+  .matx-summary{padding:16px 40px}
+  .matx-note{padding:12px 40px}
 }
 @media(max-width:768px){
   .nav-sub,.nav-right{display:none}
@@ -1292,6 +1298,18 @@ footer{
   .foot-right{text-align:left}
   .passport-strip{padding:48px 24px}
   .swatch-strip{grid-template-columns:repeat(2,1fr)}
+  /* Material Explorer — mobile */
+  .matx-trigger{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:12px}
+  .matx-trigger-right{width:100%;justify-content:space-between}
+  .matx-trigger-sub{display:none}
+  .matx-tabs{padding:0 24px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .matx-tab{white-space:nowrap;padding:12px 14px;font-size:8px}
+  .matx-stage{padding:24px 24px;grid-template-columns:1fr !important;gap:16px}
+  .matx-card{margin:0}
+  .matx-summary{padding:14px 24px;flex-direction:column;align-items:flex-start;gap:12px}
+  .matx-summary-cta{width:100%;text-align:center}
+  .matx-note{padding:12px 24px}
+  .matx-col-hdr{padding-bottom:12px}
 }
 
 /* ══════════════════════════════════════════════
@@ -1823,7 +1841,7 @@ footer{
 <div class="matx-section" id="matxSection">
 
   <!-- Trigger row -->
-  <div class="matx-trigger" id="matxTrigger" onclick="matxToggle()">
+  <div class="matx-trigger open" id="matxTrigger" onclick="matxToggle()">
     <div class="matx-trigger-left">
       <div style="display:flex;flex-direction:column;gap:4px">
         <div class="matx-trigger-eyebrow">WHAT'S INCLUDED</div>
@@ -1846,7 +1864,7 @@ footer{
   </div>
 
   <!-- Expandable body -->
-  <div class="matx-body" id="matxBody">
+  <div class="matx-body open" id="matxBody">
 
     <!-- Category tabs -->
     <div class="matx-tabs">
@@ -3534,7 +3552,7 @@ const MATX_PRODUCTS = {
 };
 
 // State
-let matxOpen = false;
+let matxOpen = true;
 let matxCat = 'flooring';
 let matxSelected = {}; // { flooring: 'better', paint: null, trim: 'good', walls: null }
 
@@ -3656,7 +3674,8 @@ function matxUpdateSummary(){
   }).join('');
 }
 
-// Init render on first open
+// Init render — expanded by default
+matxRender();
 </script>
 </body>
 </html>
