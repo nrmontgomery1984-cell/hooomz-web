@@ -537,10 +537,11 @@ nav{
 
 /* Product visual */
 .matx-visual{
-  height:110px;
+  height:140px;
   position:relative;
   overflow:hidden;
   flex-shrink:0;
+  background:var(--surface-2);
 }
 .matx-visual-inner{
   width:100%;height:100%;
@@ -1926,17 +1927,17 @@ footer{
 
     <!-- Category tabs -->
     <div class="matx-tabs">
-      <div class="matx-tab active" data-cat="flooring" onclick="matxSetCat(this,'flooring')">
-        <span class="matx-tab-dot" style="background:#B8956A"></span>FLOORING
-      </div>
-      <div class="matx-tab" data-cat="paint" onclick="matxSetCat(this,'paint')">
-        <span class="matx-tab-dot" style="background:#C8BAA8"></span>PAINT
+      <div class="matx-tab active" data-cat="lvt" onclick="matxSetCat(this,'lvt')">
+        <span class="matx-tab-dot" style="background:#B8956A"></span>LVT
       </div>
       <div class="matx-tab" data-cat="trim" onclick="matxSetCat(this,'trim')">
         <span class="matx-tab-dot" style="background:var(--accent)"></span>TRIM
       </div>
+      <div class="matx-tab" data-cat="doors" onclick="matxSetCat(this,'doors')">
+        <span class="matx-tab-dot" style="background:#8B6B4A"></span>DOORS
+      </div>
       <div class="matx-tab" data-cat="walls" onclick="matxSetCat(this,'walls')">
-        <span class="matx-tab-dot" style="background:#2C3E50"></span>FEATURE WALLS
+        <span class="matx-tab-dot" style="background:#2C3E50"></span>ACCENT WALLS
       </div>
     </div>
 
@@ -3449,169 +3450,166 @@ function fpmRenderRpanel(){
 // ═══════════════════════════════════════════════
 
 const MATX_PRODUCTS = {
-  flooring: [
+  lvt: [
     {
       tier:'good',
-      brand:'Lifeproof / Sterling Oak',
-      name:'Sterling Oak 6" Plank',
-      tags:['Easy install','Budget-friendly','No underlayment'],
+      brand:'Mannington / ADURA Max',
+      name:'Lagos Cove 12×24" Tile',
+      tags:['Waterproof','Stone look','Easy install'],
       labsTested:false,
-      price:'$3.49/sq ft',
-      sku:'LP-600-349',
+      price:'Contact for pricing',
+      sku:'MTE701',
       warranty:'Lifetime residential',
-      visualClass:'fp-lvp-oak',
-      detail:'Direct install, no underlayment needed. Strong value for rental or first-time floor upgrades.'
+      imageUrl:'https://manningtonprod.pimcoreclient.com/TransformedImages/mte701-rte701-rs-lagos-cove.jpeg',
+      detail:'8mm WPC tile with 20 mil wear layer and aluminum oxide coating. Floating install. Stone-look tile format without the cold or cracking.'
     },
     {
       tier:'better',
-      brand:'Cortec / Pro Plus',
-      name:'Seashore Oak 7" Wide',
-      tags:['Pets','Kids','High traffic','Labs tested'],
+      brand:'Mannington / ADURA Max',
+      name:'Noble Oak Branch 7×60" Plank',
+      tags:['Wide plank','Scratch resistant','Attached pad'],
       labsTested:true,
-      price:'$4.89/sq ft',
-      sku:'CP-750-489',
-      warranty:'25 yr residential',
-      visualClass:'fp-lvp-oak-better',
-      detail:'Waterproof core, 20 mil wear layer. Top pick for main floor family spaces. Labs confirmed #1 on scratch resistance.'
+      price:'Contact for pricing',
+      sku:'MPB822',
+      warranty:'Lifetime residential',
+      imageUrl:'https://manningtonprod.pimcoreclient.com/TransformedImages/mpb822-rpb822-rs-noble_oak-branch.jpeg',
+      detail:'8mm WPC wide plank with attached pad. 20 mil wear layer. 60" length creates fewer seams. Our top pick for main floor family spaces.'
     },
     {
       tier:'best',
-      brand:'Mirage / Maple',
-      name:'Maple Country 3¼" Strip',
-      tags:['Solid hardwood','Canadian-made','Resale value'],
+      brand:'Mannington / ADURA Max',
+      name:'Aspen Lodge 7×48" Plank',
+      tags:['Premium wood look','Waterproof','Resale value'],
       labsTested:false,
-      price:'$8.20/sq ft',
-      sku:'MR-MC34-820',
-      warranty:'Lifetime structural',
-      visualClass:'fp-hardwood',
-      detail:'Site-finished solid hardwood. Nail-down only. Can be refinished multiple times. The floor you keep forever.'
-    }
-  ],
-  paint: [
-    {
-      tier:'good',
-      brand:'Benjamin Moore / Regal Classic',
-      name:'OC-17 White Dove',
-      tags:['2 coats','Low VOC','Clean white'],
-      labsTested:false,
-      price:'From $74/gallon',
-      sku:'BM-RC-OC17',
-      warranty:'1 yr workmanship',
-      visualClass:'fp-paint-good',
-      paintColor:'#F5F2EE',
-      detail:'Reliable coverage, clean neutral white. Ideal for trim and ceilings. Great base spec.'
-    },
-    {
-      tier:'better',
-      brand:'Benjamin Moore / Regal Select',
-      name:'OC-65 Soft White',
-      tags:['Washable','Mold resistant','Eggshell'],
-      labsTested:true,
-      price:'From $82/gallon',
-      sku:'BM-RS-OC65',
-      warranty:'2 yr workmanship',
-      visualClass:'fp-paint-better',
-      paintColor:'#EAE6DC',
-      detail:'Labs tested for adhesion and chip resistance. Best wall finish for high-use spaces. Our most recommended spec.'
-    },
-    {
-      tier:'best',
-      brand:'Benjamin Moore / Advance',
-      name:'HC-172 Revere Pewter',
-      tags:['Alkyd hybrid','Full gloss trim','Designers choice'],
-      labsTested:true,
-      price:'From $91/gallon',
-      sku:'BM-ADV-HC172',
-      warranty:'2 yr workmanship',
-      visualClass:'fp-paint-best',
-      paintColor:'#2C3E50',
-      detail:'Hard, chip-resistant finish. Self-levelling for zero brush marks on trim. The spec professionals use on high-end millwork.'
+      price:'Contact for pricing',
+      sku:'MAX082',
+      warranty:'Lifetime residential',
+      imageUrl:'https://manningtonprod.pimcoreclient.com/TransformedImages/MAX082-RS-Aspen-Lodge.jpeg',
+      detail:'8mm WPC plank with rich wood grain texture. Waterproof, scratch-resistant, steam mop approved. The floor you keep forever.'
     }
   ],
   trim: [
     {
       tier:'good',
-      brand:'Craftsman / Modern Flat',
-      name:'3½" Flat Base / 2¼" Casing',
-      tags:['Modern homes','Pairs with LVP'],
+      brand:'Alexandria Moulding',
+      name:'Colonial Package',
+      tags:['Traditional','Pine','Classic profile'],
       labsTested:false,
-      price:'$1.20/ln ft',
-      sku:'TR-CF3B-120',
-      warranty:'1 yr workmanship',
-      visualClass:'fp-trim-good',
-      trimProfile:'flat',
-      detail:'Flat-face, minimal profile. Works beautifully with LVP flooring transitions. Clean and contemporary.'
+      price:'Contact for pricing',
+      sku:'00621 + 00608',
+      warranty:'Manufacturer',
+      imageUrl:'https://www.alexandriamoulding.com/cdn/shop/files/00621_71873ff5-e539-4cc9-98d6-ed633d13c9a2.jpg?v=1739194619',
+      imageUrl2:'https://www.alexandriamoulding.com/cdn/shop/files/00608_61dfca56-dfd9-4184-aa89-34bbaf515968.jpg?v=1739194615',
+      detail:'Pine Colonial casing (7/16"×2-1/8") paired with matching Colonial baseboard (3/8"×4-1/8"). The classic traditional profile for heritage and character homes.'
     },
     {
       tier:'better',
-      brand:'Craftsman / Tall Contemporary',
-      name:'4½" Tall Base / 2¾" Casing',
-      tags:['High ceilings','Open concept','Most popular','Designer look'],
+      brand:'Alexandria Moulding',
+      name:'Modern Package',
+      tags:['Clean lines','MDF','Most popular'],
       labsTested:false,
-      price:'$1.55/ln ft',
-      sku:'TR-CT4B-155',
-      warranty:'2 yr workmanship',
-      visualClass:'fp-trim-better',
-      trimProfile:'tall-flat',
-      detail:'Taller, cleaner, more presence. Makes ceilings feel higher. Designer staple for main floor refreshes.'
+      price:'Contact for pricing',
+      sku:'01113 + 03466',
+      warranty:'Manufacturer',
+      imageUrl:'https://www.alexandriamoulding.com/cdn/shop/files/01113_8ac3f25d-7fe9-4e18-92d5-496050d55290.jpg?v=1739194681',
+      imageUrl2:'https://www.alexandriamoulding.com/cdn/shop/files/03466_69f735bb-f23b-4ce1-bf17-e51993089d77.jpg?v=1739194750',
+      detail:'Primed MDF casing (3/4"×3-1/2") paired with Step baseboard (5/8"×7-1/4"). Clean, contemporary lines. Our most specified trim package for main floor refreshes.'
     },
     {
       tier:'best',
-      brand:'Colonial / Detailed',
-      name:'5¼" Colonial Base / Casing Set',
-      tags:['Traditional','Crown moulding ready','Resale value'],
+      brand:'Alexandria Moulding',
+      name:'Vintage Package',
+      tags:['Step profile','Primed FJ Pine','Designer look'],
       labsTested:false,
-      price:'$2.10/ln ft',
-      sku:'TR-COL54-210',
-      warranty:'2 yr workmanship',
-      visualClass:'fp-trim-best',
-      trimProfile:'colonial',
-      detail:'Full routed colonial profile with backband casing. The classic spec for homes that will be on the market.'
+      price:'Contact for pricing',
+      sku:'00736 + 05709',
+      warranty:'Manufacturer',
+      imageUrl:'https://www.alexandriamoulding.com/cdn/shop/files/00736_b6efdc8d-05c6-4a00-9a06-783b6f0cdfe4.jpg?v=1739194642',
+      imageUrl2:'https://www.alexandriamoulding.com/cdn/shop/files/05709_df69b4e9-e6b3-4218-8c32-890fe7c838e9.jpg?v=1740740750',
+      detail:'Primed FJ Pine Step casing (3/4"×3-1/2") paired with matching baseboard (5/8"×5"). Detailed vintage profile with real wood construction. The spec for homes that stand out.'
+    }
+  ],
+  doors: [
+    {
+      tier:'good',
+      brand:'Metrie',
+      name:'Riverside Moulded Panel',
+      tags:['Raised panel','Primed','Classic'],
+      labsTested:false,
+      price:'Contact for pricing',
+      sku:'1312486',
+      warranty:'Manufacturer',
+      imageUrl:'https://metriepimimages.blob.core.windows.net/images/Damroot/WebOriginal/10068/MPS-R_80.png',
+      detail:'Moulded MDF raised panel door. Primed and ready for paint. Hollow or solid core options. The reliable classic for every room in the house.'
+    },
+    {
+      tier:'better',
+      brand:'Metrie',
+      name:'2 Panel Square Smooth',
+      tags:['Contemporary','Smooth finish','Versatile'],
+      labsTested:false,
+      price:'Contact for pricing',
+      sku:'1310905',
+      warranty:'Manufacturer',
+      imageUrl:'https://metriepimimages.blob.core.windows.net/images/Damroot/WebOriginal/10068/MPS-2S_80.png',
+      detail:'Smooth 2-panel square door. Clean lines work with any trim style. Primed MDF. The modern standard for open-concept renovations.'
+    },
+    {
+      tier:'best',
+      brand:'Metrie Complete',
+      name:'Lincoln Park Polar White',
+      tags:['Pre-painted','Modern','Premium finish'],
+      labsTested:false,
+      price:'Contact for pricing',
+      sku:'1690064',
+      warranty:'Manufacturer',
+      imageUrl:'https://metriepimimages.blob.core.windows.net/images/Damroot/WebOriginal/10079/LincolnPark_ColorImage_Slab_PolarWhite_MetrieComplete.png',
+      detail:'Factory-painted Polar White moulded panel door. No on-site painting required — flawless finish out of the box. The door that elevates the entire floor.'
     }
   ],
   walls: [
     {
       tier:'good',
-      brand:'Paint / Accent Wall',
-      name:'Single Colour Feature Wall',
-      tags:['1-day install','No materials','Colour impact'],
+      brand:'Foamcore',
+      name:'Chevron Wood Wall Panel',
+      tags:['Statement piece','Easy install','Wood pattern'],
       labsTested:false,
-      price:'From $280',
-      sku:'FW-ACC-001',
-      warranty:'1 yr workmanship',
-      visualClass:'fp-wall-good',
-      detail:'Deep colour on one wall transforms a room instantly. The highest impact change per dollar. Clean lines, two coats.'
+      price:'From $129/panel',
+      sku:'WP-010',
+      warranty:'Manufacturer',
+      imageUrl:'https://www.foamcore.ca/cdn/shop/files/WP010-CHEVRON-1-scaled_c8ab419a-46a1-49b0-8349-aafec3634c59.jpg?v=1709617142',
+      detail:'Chevron-pattern wood wall panel. Bold geometric statement. One panel transforms a feature wall. Easy adhesive or nail install.'
     },
     {
       tier:'better',
-      brand:'Board & Batten / Shiplap',
-      name:'Vertical Board & Batten Panel',
-      tags:['Farmhouse','Contemporary','Durable'],
-      labsTested:false,
-      price:'From $18/sq ft installed',
-      sku:'FW-BB-180',
-      warranty:'2 yr workmanship',
-      visualClass:'fp-wall-better',
-      detail:'MDF boards and battens on painted wall. Height-adjustable. One of the highest-ROI visual upgrades on a main floor.'
+      brand:'Creative Surfaces',
+      name:'Laminate Slat Acoustic Panel',
+      tags:['Acoustic NRC 0.75','FSC certified','Sound absorption'],
+      labsTested:true,
+      price:'Contact for pricing',
+      sku:'Hamilton NB057',
+      warranty:'Manufacturer',
+      imageUrl:'https://creativesurfaces.ca/cdn/shop/files/ROOM_Bedroom_Hamilton_NB057_4FT_ae026660-05e4-4f29-abcf-50ffec98c037.jpg',
+      detail:'12-slat laminate acoustic panel with PET polyester backer. NRC 0.75 rating. FSC-certified wood. Sound absorption meets refined design.'
     },
     {
       tier:'best',
-      brand:'Slat Wall / Microcement',
-      name:'Wood Slat Accent Wall',
-      tags:['Acoustic benefit','Natural wood','High-end look','Labs tested'],
-      labsTested:true,
-      price:'From $32/sq ft installed',
-      sku:'FW-SLT-320',
-      warranty:'2 yr workmanship',
-      visualClass:'fp-wall-best',
-      detail:'Precision-cut wood slats on backing panel. Adds warmth, texture, and sound absorption. Labs confirmed best installation method for NB humidity conditions.'
+      brand:'Foamcore',
+      name:'Black Grooved Wall Panel',
+      tags:['Premium look','Dark accent','High-end'],
+      labsTested:false,
+      price:'From $116/panel',
+      sku:'WP-020',
+      warranty:'Manufacturer',
+      imageUrl:'https://www.foamcore.ca/cdn/shop/products/blackGroovePanels-e1614201784516.jpg?v=1709505007',
+      detail:'Black grooved accent panel. Deep, dramatic texture. The high-impact spec for feature walls, media rooms, and entryways.'
     }
   ]
 };
 
 // State
 let matxOpen = true;
-let matxCat = 'flooring';
+let matxCat = 'lvt';
 let matxSelected = {}; // { flooring: 'better', paint: null, trim: 'good', walls: null }
 
 function matxToggle(){
@@ -3646,18 +3644,13 @@ function matxRender(){
 
     // Build visual
     let visual = '';
-    if(matxCat === 'paint' && p.paintColor){
-      visual = `<div class="matx-visual"><div class="matx-visual-inner" style="background:${p.paintColor};position:relative">
-        <div style="position:absolute;bottom:10px;left:14px">
-          <div style="font-family:var(--font-mono);font-size:9px;color:rgba(0,0,0,.35);letter-spacing:0.06em">${p.sku}</div>
-          <div style="font-family:var(--font-display);font-size:12px;font-weight:600;color:rgba(0,0,0,.5);margin-top:1px">${p.name.split(' ').slice(-2).join(' ')}</div>
-        </div>
-        <div style="position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:${p.paintColor};border:2px solid rgba(0,0,0,.1);box-shadow:0 2px 8px rgba(0,0,0,.15)"></div>
-      </div></div>`;
-    } else if(matxCat === 'trim'){
-      visual = `<div class="matx-visual ${p.visualClass}">${matxTrimSVG(p.trimProfile)}</div>`;
-    } else {
-      visual = `<div class="matx-visual"><div class="matx-visual-inner ${p.visualClass}"></div></div>`;
+    if(p.imageUrl2){
+      visual = `<div class="matx-visual" style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <img src="${p.imageUrl}" alt="${p.name} casing" style="width:100%;height:100%;object-fit:cover;border-right:1px solid var(--border)">
+        <img src="${p.imageUrl2}" alt="${p.name} baseboard" style="width:100%;height:100%;object-fit:cover">
+      </div>`;
+    } else if(p.imageUrl){
+      visual = `<div class="matx-visual"><img src="${p.imageUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"></div>`;
     }
 
     const labsBadge = p.labsTested ? `<span class="matx-card-tag labs">Labs tested</span>` : '';
@@ -3721,7 +3714,7 @@ function matxUpdateSummary(){
     container.innerHTML = `<span style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.08em;color:var(--muted)">Select a product in each category to build your tier picture</span>`;
     return;
   }
-  const catLabels = {flooring:'Flooring',paint:'Paint',trim:'Trim',walls:'Feature Walls'};
+  const catLabels = {lvt:'LVT',trim:'Trim',doors:'Doors',walls:'Accent Walls'};
   const tierColors = {good:'#5C7A3A',better:'var(--yellow)',best:'var(--charcoal)'};
   container.innerHTML = entries.map(([cat, tier]) => {
     const prod = MATX_PRODUCTS[cat].find(p => p.tier === tier);
