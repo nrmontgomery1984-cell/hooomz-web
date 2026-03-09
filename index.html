@@ -1282,6 +1282,13 @@ footer{
   .matx-stage{padding:32px 40px}
   .matx-summary{padding:16px 40px}
   .matx-note{padding:12px 40px}
+  /* Portal section — tablet */
+  .portal-section{padding:56px 40px;gap:40px}
+  .preview-body{grid-template-columns:1fr 180px}
+  /* Statement section — tablet */
+  .statement-section{padding:56px 40px}
+  .statement-bottom{grid-template-columns:1fr}
+  .statement-cta{border-left:none;border-top:1px solid rgba(255,255,255,.08);min-width:0}
 }
 @media(max-width:768px){
   .nav-sub,.nav-right{display:none}
@@ -1298,6 +1305,40 @@ footer{
   .foot-right{text-align:left}
   .passport-strip{padding:48px 24px}
   .swatch-strip{grid-template-columns:repeat(2,1fr)}
+  /* Floor plan modal — mobile */
+  .fpm-topbar{padding:0 12px;gap:8px;flex-wrap:wrap;height:auto;min-height:48px;padding-top:8px;padding-bottom:8px}
+  .fpm-job{font-size:8px}
+  .fpm-addr{display:none}
+  .fpm-progress{display:none}
+  .fpm-main{flex-direction:column}
+  .fpm-rpanel{width:100%;max-height:40vh;border-left:none;border-top:1px solid rgba(255,255,255,.07)}
+  #fpm-fp{width:100%;height:auto;max-width:400px}
+  .fpm-canvas{min-height:200px}
+  .fpm-floor-sel{bottom:8px;left:8px}
+  .fpm-zoom-ctrl{bottom:8px}
+  /* Passport modal — mobile */
+  #ppModal [data-pp="sidebar"]{display:none !important}
+  #ppModal [data-pp="topbar"]{padding:0 12px !important;height:auto !important;min-height:48px !important;flex-wrap:wrap !important;padding-top:8px !important;padding-bottom:8px !important}
+  /* Tracker section — mobile */
+  .tracker-section{grid-template-columns:1fr}
+  .tracker-left{border-right:none;border-bottom:1px solid rgba(255,255,255,.06)}
+  .tracker-right{min-height:auto;padding:24px}
+  /* Portal section — mobile */
+  .portal-section{padding:48px 24px;grid-template-columns:1fr;gap:32px}
+  .portal-body{max-width:100%}
+  .preview-body{grid-template-columns:1fr}
+  .preview-sidebar{border-left:none;border-top:1px solid rgba(255,255,255,.06)}
+  .preview-plan svg{max-width:100%}
+  /* Statement section — mobile */
+  .statement-section{padding:48px 24px}
+  .statement-bottom{grid-template-columns:1fr}
+  .statement-cta{border-left:none;border-top:1px solid rgba(255,255,255,.08);min-width:0;padding:24px 24px}
+  /* Passport card — mobile */
+  .pc-row{grid-template-columns:1fr 1fr}
+  .pc-cell:nth-child(2){border-right:none}
+  .pc-cell:nth-child(3){border-right:none;border-top:1px solid rgba(255,255,255,.06);grid-column:1 / -1}
+  .pc-header{flex-direction:column;gap:12px}
+  .pc-footer{flex-direction:column;gap:8px;align-items:flex-start}
   /* Material Explorer — mobile */
   .matx-trigger{padding:16px 24px;flex-direction:column;align-items:flex-start;gap:12px}
   .matx-trigger-right{width:100%;justify-content:space-between}
