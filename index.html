@@ -3644,13 +3644,14 @@ function matxRender(){
 
     // Build visual
     let visual = '';
+    const fitStyle = (matxCat === 'trim' || matxCat === 'doors') ? 'object-fit:contain;padding:8px' : 'object-fit:cover';
     if(p.imageUrl2){
       visual = `<div class="matx-visual" style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-        <img src="${p.imageUrl}" alt="${p.name} casing" style="width:100%;height:100%;object-fit:cover;border-right:1px solid var(--border)">
-        <img src="${p.imageUrl2}" alt="${p.name} baseboard" style="width:100%;height:100%;object-fit:cover">
+        <img src="${p.imageUrl}" alt="${p.name} casing" style="width:100%;height:100%;${fitStyle};border-right:1px solid var(--border)">
+        <img src="${p.imageUrl2}" alt="${p.name} baseboard" style="width:100%;height:100%;${fitStyle}">
       </div>`;
     } else if(p.imageUrl){
-      visual = `<div class="matx-visual"><img src="${p.imageUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"></div>`;
+      visual = `<div class="matx-visual"><img src="${p.imageUrl}" alt="${p.name}" style="width:100%;height:100%;${fitStyle}"></div>`;
     }
 
     const labsBadge = p.labsTested ? `<span class="matx-card-tag labs">Labs tested</span>` : '';
