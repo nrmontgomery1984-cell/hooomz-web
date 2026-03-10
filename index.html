@@ -3644,14 +3644,23 @@ function matxRender(){
 
     // Build visual
     let visual = '';
-    const fitStyle = (matxCat === 'trim' || matxCat === 'doors') ? 'object-fit:contain;padding:8px' : 'object-fit:cover';
     if(p.imageUrl2){
-      visual = `<div class="matx-visual" style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-        <img src="${p.imageUrl}" alt="${p.name} casing" style="width:100%;height:100%;${fitStyle};border-right:1px solid var(--border)">
-        <img src="${p.imageUrl2}" alt="${p.name} baseboard" style="width:100%;height:100%;${fitStyle}">
+      visual = `<div class="matx-visual" style="height:180px;display:flex;flex-direction:column">
+        <div style="flex:1;min-height:0;overflow:hidden;border-bottom:1px solid var(--border);position:relative">
+          <div style="position:absolute;top:4px;left:10px;font-family:var(--font-mono);font-size:7px;letter-spacing:.1em;color:var(--muted);z-index:1">CASING</div>
+          <img src="${p.imageUrl}" alt="${p.name} casing" style="width:100%;height:100%;object-fit:contain;padding:4px 12px">
+        </div>
+        <div style="flex:1;min-height:0;overflow:hidden;position:relative">
+          <div style="position:absolute;top:4px;left:10px;font-family:var(--font-mono);font-size:7px;letter-spacing:.1em;color:var(--muted);z-index:1">BASEBOARD</div>
+          <img src="${p.imageUrl2}" alt="${p.name} baseboard" style="width:100%;height:100%;object-fit:contain;padding:4px 12px">
+        </div>
+      </div>`;
+    } else if(matxCat === 'doors'){
+      visual = `<div class="matx-visual" style="height:180px;display:flex;align-items:center;justify-content:center;padding:10px">
+        <img src="${p.imageUrl}" alt="${p.name}" style="max-height:100%;object-fit:contain">
       </div>`;
     } else if(p.imageUrl){
-      visual = `<div class="matx-visual"><img src="${p.imageUrl}" alt="${p.name}" style="width:100%;height:100%;${fitStyle}"></div>`;
+      visual = `<div class="matx-visual"><img src="${p.imageUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"></div>`;
     }
 
     const labsBadge = p.labsTested ? `<span class="matx-card-tag labs">Labs tested</span>` : '';
