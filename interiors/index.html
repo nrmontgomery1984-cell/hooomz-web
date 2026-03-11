@@ -1,1130 +1,1342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Hooomz Interiors — Moncton, NB</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooomz Interiors — Floors. Paint. Trim. Done right.</title>
+<meta name="description" content="Interior finishing built on 20+ years of trade experience. Flooring, paint, trim, and specialty finishes in Southern New Brunswick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'DM Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
 
-  :root {
-    --charcoal: #1A1713;
-    --slate:    #252220;
-    --stone:    #32302C;
-    --pebble:   #504A43;
-    --ash:      #857E76;
-    --linen:    #EDE6DC;
-    --cream:    #F6F0E8;
-    --clay:     #A07355;
-    --clay-l:   #C4997A;
-    --clay-d:   #6B4A35;
-    --o-red:    #C94F3E;
-    --o-yellow: #D4A017;
-    --o-green:  #4A9B6F;
-    --blue:     #4A7FA5;
-  }
+  --bg: #F0EDE8;
+  --surface: #FAF8F5;
+  --charcoal: #1A1714;
+  --dark-nav: #111010;
+  --grey: #6B6560;
+  --grey-light: #A09C98;
+  --mid: #5C5349;
+  --muted: #9A8E84;
+  --faint: #D4CEC7;
+  --border: #E0DCD7;
+  --border-rgba: rgba(0,0,0,.10);
+  --border-s: rgba(0,0,0,.18);
+  --accent-bg: rgba(107,101,96,.09);
+  --accent-border: rgba(107,101,96,.22);
 
-  html { scroll-behavior: smooth; }
+  --red: #DC2626;
+  --yellow: #D97706;
+  --green: #16A34A;
 
-  body {
-    font-family: 'Lora', Georgia, serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    overflow-x: hidden;
-  }
+  --radius: 10px;
+  --radius-sm: 6px;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
-    background: transparent;
-    transition: background .4s, backdrop-filter .4s;
-  }
-  nav.scrolled {
-    background: rgba(26,23,19,.92);
-    backdrop-filter: blur(12px);
-  }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-  .nav-logo { display: flex; flex-direction: column; gap: 1px; }
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--dark-nav);
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+}
+.nav-left { display: flex; align-items: center; gap: 12px; }
+.nav-dots { display: flex; gap: 5px; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; }
+.nav-dot.red { background: var(--red); }
+.nav-dot.yellow { background: var(--yellow); }
+.nav-dot.green { background: var(--green); }
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.nav-brand strong { font-weight: 700; }
+.nav-brand span { font-weight: 300; opacity: 0.7; margin-left: 4px; }
 
-  .wordmark {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    line-height: 1;
-    color: var(--cream);
-    display: flex; align-items: baseline;
-    gap: 0;
-  }
-  .wordmark .o-r { color: var(--o-red); }
-  .wordmark .o-y { color: var(--o-yellow); }
-  .wordmark .o-g { color: var(--o-green); }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,.45);
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: #fff; }
+.nav-muted {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,.2);
+  text-transform: uppercase;
+  cursor: default;
+}
+.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  background: var(--green);
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.15s;
+  display: inline-block;
+}
+.nav-cta:hover { opacity: 0.9; }
 
-  .sub-brand {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    font-size: 9px;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    color: var(--ash);
-    padding-left: 1px;
-  }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 18px; height: 1.5px; background: #fff; border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
-  .nav-links {
-    display: flex; align-items: center; gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: rgba(237,230,220,.6);
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--cream); }
+.nav-mobile-menu {
+  display: none;
+  position: fixed; top: 52px; left: 0; right: 0;
+  background: var(--dark-nav);
+  padding: 24px 32px 32px;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  z-index: 99;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu .nav-link,
+.nav-mobile-menu .nav-muted { font-size: 11px; padding: 4px 0; }
+.nav-mobile-menu .nav-cta { text-align: center; margin-top: 8px; }
 
-  .nav-cta {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: .1em; text-transform: uppercase;
-    text-decoration: none;
-    padding: 9px 22px; border-radius: 2px;
-    background: var(--clay);
-    color: var(--cream);
-    transition: background .2s;
-  }
-  .nav-cta:hover { background: var(--clay-l); }
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  background: var(--bg);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 79px,
+    rgba(224,220,215,0.5) 79px,
+    rgba(224,220,215,0.5) 80px
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 64px 0;
+  padding-top: 52px;
+}
+.hero-content {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroFadeUp 0.7s ease forwards;
+  animation-delay: 0.15s;
+}
+@keyframes heroFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--charcoal);
-    display: flex; flex-direction: column;
-    justify-content: center;
-    padding: 120px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--charcoal);
+  margin-bottom: 0;
+}
+.hero-h1 .light {
+  font-weight: 300;
+  color: var(--grey-light);
+}
+.hero-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 40px 0 0;
+}
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 32px 0 48px;
+  gap: 40px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroFadeUp 0.6s ease forwards;
+  animation-delay: 0.4s;
+}
+.hero-body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--mid);
+  max-width: 520px;
+  font-weight: 400;
+}
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+}
 
-  /* grain overlay */
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: .03;
-    pointer-events: none;
-  }
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.10em;
+  text-transform: uppercase; font-weight: 500;
+  padding: 13px 24px; border-radius: var(--radius-sm);
+  background: var(--charcoal); color: #fff;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #333028; }
+.btn-primary svg { width: 12px; height: 12px; }
 
-  /* diagonal clay accent line */
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: -40px; right: 160px;
-    width: 1px; height: 140vh;
-    background: linear-gradient(to bottom, transparent, var(--clay) 30%, var(--clay) 70%, transparent);
-    opacity: .12;
-    transform: rotate(8deg);
-    pointer-events: none;
-  }
+.btn-green {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.10em;
+  text-transform: uppercase; font-weight: 500;
+  padding: 13px 24px; border-radius: var(--radius-sm);
+  background: var(--green); color: #fff;
+  transition: opacity 0.15s;
+}
+.btn-green:hover { opacity: 0.9; }
 
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; font-weight: 500;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: var(--clay);
-    margin-bottom: 24px;
-    display: flex; align-items: center; gap: 14px;
-    animation: fadeUp .8s ease both;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block; width: 32px; height: 1px;
-    background: var(--clay);
-  }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.10em;
+  text-transform: uppercase; font-weight: 500;
+  padding: 12px 24px; border-radius: var(--radius-sm);
+  background: transparent; color: var(--mid);
+  border: 1px solid var(--border-s);
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-outline:hover { border-color: var(--charcoal); color: var(--charcoal); }
 
-  .hero-headline {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700;
-    font-size: clamp(48px, 6.5vw, 88px);
-    line-height: .95;
-    letter-spacing: -.01em;
-    text-transform: uppercase;
-    color: var(--cream);
-    max-width: 820px;
-    margin-bottom: 32px;
-    animation: fadeUp .8s .1s ease both;
-  }
-  .hero-headline em {
-    font-style: normal;
-    color: var(--clay);
-  }
+/* ============================================================
+   PROOF STRIP
+   ============================================================ */
+.proof-strip {
+  background: var(--dark-nav);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.proof-item {
+  padding: 40px 32px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.proof-item:last-child { border-right: none; }
+.proof-value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.proof-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,.4);
+  line-height: 1.5;
+}
 
-  .hero-sub {
-    font-family: 'Lora', serif;
-    font-size: 18px;
-    line-height: 1.7;
-    color: rgba(237,230,220,.65);
-    max-width: 520px;
-    margin-bottom: 48px;
-    animation: fadeUp .8s .2s ease both;
-  }
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--faint);
+}
+.section-headline {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+}
+.section-body-right {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--mid);
+  max-width: 440px;
+  padding-top: 28px;
+}
 
-  .hero-actions {
-    display: flex; align-items: center; gap: 20px;
-    animation: fadeUp .8s .3s ease both;
-  }
+/* ============================================================
+   SERVICES SECTION
+   ============================================================ */
+.services-section {
+  padding: 96px 64px;
+  background: var(--bg);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.service-card {
+  background: var(--surface);
+  padding: 36px 28px;
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.service-card:first-child {
+  border-radius: var(--radius) 0 0 var(--radius);
+  border-left: 1px solid var(--border);
+}
+.service-card:last-child {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.service-card:hover { background: #FFFFFF; }
 
-  .btn-primary {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase;
-    text-decoration: none;
-    padding: 16px 36px; border-radius: 2px;
-    background: var(--clay);
-    color: var(--cream);
-    border: none; cursor: pointer;
-    transition: background .2s, transform .15s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--clay-l); transform: translateY(-1px); }
+.service-icon {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.service-icon svg { width: 28px; height: 28px; }
 
-  .btn-ghost {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; font-weight: 500;
-    letter-spacing: .14em; text-transform: uppercase;
-    text-decoration: none;
-    padding: 16px 28px; border-radius: 2px;
-    border: 1px solid rgba(237,230,220,.2);
-    color: rgba(237,230,220,.6);
-    transition: border-color .2s, color .2s;
-    display: inline-block;
-  }
-  .btn-ghost:hover { border-color: var(--clay); color: var(--clay); }
+.service-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.service-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--mid);
+  margin-bottom: 16px;
+}
+.service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.service-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--accent-bg);
+  color: var(--grey);
+  border: 1px solid var(--accent-border);
+}
 
-  .hero-scroll {
-    position: absolute; bottom: 40px; left: 48px;
-    display: flex; align-items: center; gap: 12px;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .16em;
-    text-transform: uppercase; color: var(--pebble);
-    animation: fadeUp .8s .5s ease both;
-  }
-  .hero-scroll::after {
-    content: '';
-    display: block; width: 48px; height: 1px;
-    background: var(--pebble);
-  }
+/* ============================================================
+   TRUST SECTION
+   ============================================================ */
+.trust-section {
+  background: var(--dark-nav);
+  padding: 96px 64px;
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.trust-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.trust-eyebrow::before {
+  content: ''; display: block; width: 20px; height: 1px;
+  background: rgba(255,255,255,.15);
+}
+.trust-quote {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.trust-quote em {
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.4);
+}
+.trust-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 32px;
+}
+.trust-creds { display: flex; flex-direction: column; gap: 12px; }
+.trust-cred {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--radius-sm);
+}
+.trust-cred-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.trust-cred-icon svg { width: 18px; height: 18px; }
+.trust-cred-title {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 600;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.trust-cred-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,.35);
+  letter-spacing: 0.04em;
+}
 
-  /* hero stats row */
-  .hero-stats {
-    position: absolute; bottom: 40px; right: 48px;
-    display: flex; gap: 40px;
-    animation: fadeUp .8s .4s ease both;
-  }
-  .hero-stat-item { text-align: right; }
-  .hero-stat-val {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 28px; font-weight: 700;
-    color: var(--clay); line-height: 1;
-  }
-  .hero-stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--ash);
-    margin-top: 4px;
-  }
+/* Passport Card */
+.passport-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,.25);
+}
+.passport-header {
+  background: var(--charcoal);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.passport-header-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+.passport-header-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,.5);
+  letter-spacing: 0.06em;
+}
+.passport-score {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #f0ede8;
+}
+.passport-score-value {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--green);
+  line-height: 1;
+}
+.passport-score-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.passport-score-addr {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--grey-light);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+.passport-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px solid #f0ede8;
+}
+.passport-row:last-child { border-bottom: none; }
+.passport-row-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}
+.passport-row-value { text-align: right; }
+.passport-row-main {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+.passport-row-sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--grey-light);
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+.passport-footer {
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #faf8f5;
+  border-top: 1px solid #f0ede8;
+}
+.passport-footer-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--grey-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.passport-footer-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
 
-  /* ── TRANSITION BAND ── */
-  .band {
-    background: var(--charcoal);
-    padding: 0 48px 64px;
-  }
-  .band-inner {
-    border-top: 1px solid var(--pebble);
-    padding-top: 48px;
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-    background: var(--pebble);
-    border-radius: 4px; overflow: hidden;
-  }
-  .band-card {
-    background: var(--slate);
-    padding: 32px 28px;
-  }
-  .band-card-icon {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--clay);
-    letter-spacing: .1em; margin-bottom: 12px;
-  }
-  .band-card-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 15px; font-weight: 600;
-    letter-spacing: .08em; text-transform: uppercase;
-    color: var(--cream); margin-bottom: 10px;
-  }
-  .band-card-body {
-    font-family: 'Lora', serif;
-    font-size: 13px; line-height: 1.7;
-    color: var(--ash);
-  }
+/* ============================================================
+   PROCESS SECTION
+   ============================================================ */
+.process-section {
+  padding: 96px 64px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+.process-card {
+  background: var(--surface);
+  padding: 32px 24px;
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.process-card:first-child {
+  border-radius: var(--radius) 0 0 var(--radius);
+  border-left: 1px solid var(--border);
+}
+.process-card:last-child {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.process-card:hover { background: #fff; }
 
-  /* ── LIGHT SECTIONS ── */
-  section {
-    padding: 96px 48px;
-  }
+.process-ghost {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(26,23,20,0.07);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.process-step {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.process-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+.process-desc {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--mid);
+}
 
-  .eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; font-weight: 500;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: var(--clay); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .eyebrow::before {
-    content: '';
-    display: block; width: 24px; height: 1px;
-    background: var(--clay);
-  }
+/* ============================================================
+   FINAL CTA SECTION
+   ============================================================ */
+.cta-section {
+  padding: 96px 64px;
+  background: var(--bg);
+}
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cta-headline {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+.cta-body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--mid);
+  margin-bottom: 28px;
+  max-width: 440px;
+}
+.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
 
-  .section-headline {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 700; line-height: 1.05;
-    text-transform: uppercase; letter-spacing: -.01em;
-    color: var(--charcoal);
-  }
-  .section-headline em { font-style: normal; color: var(--clay); }
+.cta-dark-card {
+  background: var(--dark-nav);
+  border-radius: 16px;
+  padding: 48px;
+}
+.cta-dark-label {
+  font-family: var(--font-mono);
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cta-dark-label::before {
+  content: ''; display: block; width: 20px; height: 1px;
+  background: rgba(255,255,255,.15);
+}
+.cta-dark-headline {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+.cta-steps { display: flex; flex-direction: column; gap: 20px; }
+.cta-step { display: flex; align-items: flex-start; gap: 16px; }
+.cta-step-num {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  color: #fff;
+}
+.cta-step-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.55);
+  padding-top: 4px;
+}
+.cta-step-text strong {
+  color: #fff;
+  font-weight: 600;
+}
 
-  .section-body {
-    font-family: 'Lora', serif;
-    font-size: 16px; line-height: 1.8;
-    color: #5A5248;
-  }
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--dark-nav);
+  padding: 64px 64px 40px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto 48px;
+}
+.footer-logo {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.footer-logo-dots { display: flex; gap: 4px; }
+.footer-logo-dot { width: 6px; height: 6px; border-radius: 50%; }
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700;
+  color: #fff;
+}
+.footer-tagline {
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,.2);
+  letter-spacing: 0.06em;
+}
+.footer-links-title {
+  font-family: var(--font-mono);
+  font-size: 8px; font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 16px;
+}
+.footer-link {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 10px;
+  transition: color 0.15s;
+}
+.footer-link:hover { color: #fff; }
+.footer-right-info {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  line-height: 1.8;
+}
+.footer-right-info a { color: rgba(255,255,255,.55); transition: color 0.15s; }
+.footer-right-info a:hover { color: #fff; }
+.footer-divider {
+  height: 1px;
+  background: rgba(255,255,255,.06);
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-  /* ── HOW WE WORK ── */
-  .how-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .how-steps {
-    display: flex; flex-direction: column; gap: 0;
-  }
-  .step {
-    display: flex; gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(160,115,85,.15);
-    position: relative;
-  }
-  .step:last-child { border-bottom: none; }
-  .step-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    color: var(--clay); letter-spacing: .08em;
-    flex-shrink: 0; padding-top: 3px; width: 28px;
-  }
-  .step-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px; font-weight: 600;
-    letter-spacing: .08em; text-transform: uppercase;
-    color: var(--charcoal); margin-bottom: 6px;
-  }
-  .step-body {
-    font-family: 'Lora', serif;
-    font-size: 13px; line-height: 1.7; color: #6B6460;
-  }
-  .how-visual {
-    position: relative;
-  }
-  .how-visual-box {
-    aspect-ratio: 4/5;
-    background: var(--stone);
-    border-radius: 3px;
-    overflow: hidden;
-    position: relative;
-  }
-  .how-visual-box svg { width: 100%; height: 100%; }
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .hero { padding: 52px 40px 0; }
+  .services-section,
+  .trust-section,
+  .process-section,
+  .cta-section,
+  .footer { padding-left: 40px; padding-right: 40px; }
 
-  .how-tag {
-    position: absolute; bottom: -16px; right: -16px;
-    background: var(--cream);
-    border: 1px solid rgba(160,115,85,.25);
-    padding: 16px 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,.1);
-  }
-  .how-tag-val {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 32px; font-weight: 700;
-    color: var(--clay); line-height: 1;
-  }
-  .how-tag-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--ash);
-    margin-top: 4px;
-  }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card { border-left: 1px solid var(--border); }
+  .service-card:first-child { border-radius: var(--radius) 0 0 0; }
+  .service-card:nth-child(2) { border-radius: 0 var(--radius) 0 0; }
+  .service-card:nth-child(3) { border-radius: 0 0 0 var(--radius); }
+  .service-card:last-child { border-radius: 0 0 var(--radius) 0; }
 
-  /* ── WHO WE'RE FOR ── */
-  .who-section { background: var(--linen); }
-  .audience-grid {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
-    margin-top: 56px;
-  }
-  .audience-card {
-    background: var(--cream);
-    border: 1px solid rgba(160,115,85,.18);
-    border-radius: 3px;
-    padding: 36px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .audience-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 40px rgba(0,0,0,.08);
-  }
-  .audience-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .audience-card.card-homeowner::before { background: var(--clay); }
-  .audience-card.card-trade::before     { background: var(--o-green); }
-  .audience-card.card-builder::before   { background: var(--blue); }
+  .process-grid { grid-template-columns: repeat(3, 1fr); }
+  .process-card { border-left: 1px solid var(--border); }
+  .process-card:first-child { border-radius: var(--radius) 0 0 0; }
+  .process-card:nth-child(3) { border-radius: 0 var(--radius) 0 0; }
+  .process-card:nth-child(4) { border-radius: 0 0 0 0; }
+  .process-card:last-child { border-radius: 0 0 var(--radius) 0; }
 
-  .audience-icon {
-    font-family: 'DM Mono', monospace;
-    font-size: 20px; margin-bottom: 20px;
-    line-height: 1;
-  }
-  .audience-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 16px; font-weight: 700;
-    letter-spacing: .08em; text-transform: uppercase;
-    color: var(--charcoal); margin-bottom: 12px;
-  }
-  .audience-body {
-    font-family: 'Lora', serif;
-    font-size: 13px; line-height: 1.75; color: #5A5248;
-    margin-bottom: 20px;
-  }
-  .audience-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--clay);
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: gap .2s;
-  }
-  .audience-link:hover { gap: 14px; }
-  .audience-link::after { content: '→'; }
+  .proof-strip { grid-template-columns: repeat(2, 1fr); }
+  .proof-item:nth-child(2) { border-right: none; }
+  .proof-item:nth-child(3),
+  .proof-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,.07); }
+  .proof-item:nth-child(4) { border-right: none; }
+}
 
-  /* ── HONEST SECTION ── */
-  .honest-section {
-    background: var(--charcoal);
-    padding: 96px 48px;
-    position: relative; overflow: hidden;
-  }
-  .honest-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, rgba(160,115,85,.08) 0%, transparent 60%);
-  }
-  .honest-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 96px; align-items: center;
-  }
-  .honest-headline {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: clamp(32px,4vw,52px);
-    font-weight: 700; line-height: 1.05;
-    text-transform: uppercase; letter-spacing: -.01em;
-    color: var(--cream); margin-bottom: 28px;
-  }
-  .honest-headline em { font-style: normal; color: var(--clay); }
-  .honest-body {
-    font-family: 'Lora', serif;
-    font-size: 16px; line-height: 1.8;
-    color: rgba(237,230,220,.6);
-    margin-bottom: 18px;
-  }
-  .honest-body strong { color: var(--cream); font-weight: 400; }
-  .honest-pull {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-size: 22px; line-height: 1.55;
-    color: var(--clay-l);
-    border-left: 2px solid var(--clay);
-    padding-left: 24px;
-    margin: 40px 0;
-  }
-  .honest-list {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 14px;
-  }
-  .honest-list li {
-    display: flex; align-items: flex-start; gap: 14px;
-    font-family: 'Lora', serif; font-size: 14px;
-    line-height: 1.65; color: rgba(237,230,220,.7);
-  }
-  .honest-list li::before {
-    content: '—';
-    color: var(--clay); flex-shrink: 0;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px; margin-top: 2px;
-  }
+@media (max-width: 768px) {
+  .nav-right .nav-link,
+  .nav-right .nav-muted,
+  .nav-right .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
 
-  /* ── SERVICES ── */
-  .services-section { background: var(--cream); }
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 1px; background: rgba(160,115,85,.15);
-    border: 1px solid rgba(160,115,85,.15);
-    border-radius: 3px; overflow: hidden;
-    margin-top: 56px;
-  }
-  .service-card {
-    background: var(--cream);
-    padding: 40px 32px;
-    transition: background .2s;
-  }
-  .service-card:hover { background: white; }
-  .service-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; color: var(--clay);
-    letter-spacing: .1em; margin-bottom: 20px;
-  }
-  .service-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .06em;
-    color: var(--charcoal); margin-bottom: 14px;
-  }
-  .service-body {
-    font-family: 'Lora', serif;
-    font-size: 13px; line-height: 1.75; color: #6B6460;
-    margin-bottom: 20px;
-  }
-  .service-tags {
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px; letter-spacing: .1em;
-    text-transform: uppercase;
-    padding: 4px 10px; border-radius: 20px;
-    border: 1px solid rgba(160,115,85,.3);
-    color: var(--clay);
-  }
+  .hero { padding: 52px 24px 0; }
+  .hero-h1 { font-size: clamp(44px, 12vw, 72px); }
+  .hero-bottom { flex-direction: column; gap: 24px; }
+  .hero-ctas { flex-wrap: wrap; }
 
-  /* ── PROCESS VISUAL ── */
-  .process-section { background: var(--linen); }
-  .process-track {
-    display: flex; gap: 0;
-    margin-top: 56px;
-    position: relative;
-  }
-  .process-track::before {
-    content: '';
-    position: absolute;
-    top: 28px; left: 28px; right: 28px; height: 1px;
-    background: rgba(160,115,85,.25);
-  }
-  .process-step {
-    flex: 1; text-align: center; padding: 0 16px;
-    position: relative;
-  }
-  .process-dot {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--cream);
-    border: 1.5px solid rgba(160,115,85,.35);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-family: 'DM Mono', monospace;
-    font-size: 12px; font-weight: 500; color: var(--clay);
-    position: relative; z-index: 1;
-    transition: background .2s, border-color .2s;
-  }
-  .process-step:hover .process-dot {
-    background: var(--clay);
-    border-color: var(--clay);
-    color: var(--cream);
-  }
-  .process-step-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .1em;
-    color: var(--charcoal); margin-bottom: 8px;
-  }
-  .process-step-body {
-    font-family: 'Lora', serif;
-    font-size: 12px; line-height: 1.65; color: #6B6460;
-  }
+  .services-section,
+  .trust-section,
+  .process-section,
+  .cta-section,
+  .footer { padding: 64px 24px; }
 
-  /* ── CTA FOOTER ── */
-  .cta-section {
-    background: var(--charcoal);
-    padding: 112px 48px;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(160,115,85,.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cta-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .22em;
-    text-transform: uppercase; color: var(--clay);
-    margin-bottom: 20px;
-    display: flex; align-items: center; justify-content: center; gap: 14px;
-  }
-  .cta-eyebrow::before, .cta-eyebrow::after {
-    content: ''; display: block;
-    width: 40px; height: 1px; background: var(--clay);
-  }
-  .cta-headline {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: clamp(36px,5vw,68px);
-    font-weight: 700; text-transform: uppercase;
-    letter-spacing: -.01em; line-height: 1;
-    color: var(--cream); margin-bottom: 24px;
-  }
-  .cta-headline em { font-style: normal; color: var(--clay); }
-  .cta-sub {
-    font-family: 'Lora', serif;
-    font-size: 17px; line-height: 1.7;
-    color: rgba(237,230,220,.55);
-    max-width: 480px; margin: 0 auto 48px;
-  }
-  .cta-note {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--ash);
-    margin-top: 20px;
-  }
+  .section-header { flex-direction: column; gap: 16px; }
+  .section-body-right { padding-top: 0; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: #141210;
-    padding: 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 20px;
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card,
+  .service-card:first-child,
+  .service-card:nth-child(2),
+  .service-card:nth-child(3),
+  .service-card:last-child {
+    border-radius: 0; border-left: 1px solid var(--border);
   }
-  .footer-copy {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--pebble);
-  }
-  .footer-links {
-    display: flex; gap: 28px; list-style: none;
-  }
-  .footer-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px; letter-spacing: .1em;
-    text-transform: uppercase;
-    text-decoration: none; color: var(--pebble);
-    transition: color .2s;
-  }
-  .footer-links a:hover { color: var(--clay); }
+  .service-card:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  .service-card:last-child { border-radius: 0 0 var(--radius) var(--radius); }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  .trust-grid { grid-template-columns: 1fr; }
+  .cta-grid { grid-template-columns: 1fr; }
 
-  .reveal {
-    opacity: 0; transform: translateY(28px);
-    transition: opacity .7s ease, transform .7s ease;
+  .process-grid { grid-template-columns: 1fr; }
+  .process-card,
+  .process-card:first-child,
+  .process-card:nth-child(3),
+  .process-card:nth-child(4),
+  .process-card:last-child {
+    border-radius: 0; border-left: 1px solid var(--border);
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .process-card:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  .process-card:last-child { border-radius: 0 0 var(--radius) var(--radius); }
 
-  /* ── LOGO MARK (large) ── */
-  .logo-large {
-    display: flex; flex-direction: column;
-    align-items: flex-start; gap: 3px;
-  }
-  .wordmark-lg {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700; font-size: 52px;
-    letter-spacing: .1em; text-transform: uppercase;
-    color: var(--cream); line-height: 1;
-    display: flex; align-items: baseline;
-  }
-  .wordmark-lg .o-r { color: var(--o-red); }
-  .wordmark-lg .o-y { color: var(--o-yellow); }
-  .wordmark-lg .o-g { color: var(--o-green); }
-  .wordmark-lg .sub {
-    font-size: 16px; font-weight: 300;
-    letter-spacing: .32em; color: var(--ash);
-    display: block; margin-top: 6px;
-    font-family: 'Josefin Sans', sans-serif;
-  }
+  .proof-strip { grid-template-columns: 1fr 1fr; }
 
-  /* SVG illustration placeholders */
-  .room-svg {
-    width: 100%; height: 100%;
-  }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links-wrap { flex-direction: column; gap: 32px; }
+  .cta-dark-card { padding: 32px 24px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav id="nav">
-  <div class="nav-logo">
-    <div class="wordmark">
-      H<span class="o-r">O</span><span class="o-y">O</span><span class="o-g">O</span>MZ
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav">
+  <div class="nav-left">
+    <div class="nav-dots">
+      <div class="nav-dot red"></div>
+      <div class="nav-dot yellow"></div>
+      <div class="nav-dot green"></div>
     </div>
-    <div class="sub-brand">Interiors</div>
+    <div class="nav-brand"><strong>HOOOMZ</strong><span>INTERIORS</span></div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#who">Who we're for</a></li>
-  </ul>
-  <a href="#book" class="nav-cta">Book a Visit</a>
+  <div class="nav-right">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#process" class="nav-link">Process</a>
+    <a href="#about" class="nav-link">About</a>
+    <span class="nav-muted">Exteriors</span>
+    <span class="nav-muted">Labs</span>
+    <span class="nav-muted">Maintenance</span>
+    <a href="tel:+15065885585" class="nav-cta">Book a Call</a>
+  </div>
+  <div class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
-<!-- ── HERO ── -->
-<section class="hero" id="top">
-  <div class="hero-eyebrow">Greater Moncton, NB — Est. 2026</div>
-
-  <h1 class="hero-headline">
-    Your home,<br/>
-    done <em>right.</em><br/>
-    From day one.
-  </h1>
-
-  <p class="hero-sub">
-    Hooomz Interiors is a new kind of interior finishing company —
-    built on process, transparency, and trade-grade craft.
-    We're just getting started, and that's exactly the point.
-  </p>
-
-  <div class="hero-actions">
-    <a href="#book" class="btn-primary">Book a Site Visit</a>
-    <a href="#how" class="btn-ghost">See How It Works</a>
-  </div>
-
-  <div class="hero-scroll">Scroll to explore</div>
-
-  <div class="hero-stats">
-    <div class="hero-stat-item">
-      <div class="hero-stat-val">22+</div>
-      <div class="hero-stat-label">Years trade experience</div>
-    </div>
-    <div class="hero-stat-item">
-      <div class="hero-stat-val">Red Seal</div>
-      <div class="hero-stat-label">Journeyman Carpenter</div>
-    </div>
-    <div class="hero-stat-item">
-      <div class="hero-stat-val">Day 1</div>
-      <div class="hero-stat-label">That's where we are</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TRANSITION BAND ── -->
-<div class="band">
-  <div class="band-inner">
-    <div class="band-card reveal">
-      <div class="band-card-icon">◈ Flooring</div>
-      <div class="band-card-title">LVP, Hardwood & Tile</div>
-      <div class="band-card-body">Every install begins with a laser-measured site visit and a cut list, not a guess. Material selection is yours — we price three tiers so you decide what fits.</div>
-    </div>
-    <div class="band-card reveal">
-      <div class="band-card-icon">◎ Painting</div>
-      <div class="band-card-title">Walls, Trim & Specialty</div>
-      <div class="band-card-body">Prep is 80% of the job. We don't rush it. Microcement and limewash available for homeowners looking for something beyond the standard palette.</div>
-    </div>
-    <div class="band-card reveal">
-      <div class="band-card-icon">⬡ Trim & Millwork</div>
-      <div class="band-card-title">Baseboards, Casings & Built-ins</div>
-      <div class="band-card-body">Red Seal carpentry. Joints that close, reveals that line up, corners that hold. The kind of detail most crews skip when the day gets long.</div>
-    </div>
-  </div>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="#services" class="nav-link" onclick="closeMobileMenu()">Services</a>
+  <a href="#process" class="nav-link" onclick="closeMobileMenu()">Process</a>
+  <a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a>
+  <span class="nav-muted">Exteriors</span>
+  <span class="nav-muted">Labs</span>
+  <span class="nav-muted">Maintenance</span>
+  <a href="tel:+15065885585" class="nav-cta" onclick="closeMobileMenu()">Book a Call</a>
 </div>
 
-<!-- ── HOW WE WORK ── -->
-<section id="how" style="background: var(--cream);">
-  <div class="how-grid">
-    <div>
-      <div class="eyebrow reveal">How it works</div>
-      <h2 class="section-headline reveal" style="margin-bottom:20px;">
-        No surprises.<br/>
-        No runaround.<br/>
-        <em>Just the work.</em>
-      </h2>
-      <p class="section-body reveal" style="margin-bottom:48px;">
-        We built a system before we took our first job.
-        Every project follows the same process — so you always know
-        where things stand, what's coming next, and exactly what you're paying for.
-      </p>
-      <div class="how-steps">
-        <div class="step reveal">
-          <div class="step-num">01</div>
-          <div>
-            <div class="step-title">Site Visit — we come to you</div>
-            <div class="step-body">Laser measurements, LiDAR scan of the space, and a proper look at what the subfloor and substrate are telling us. Free of charge, no obligation.</div>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">02</div>
-          <div>
-            <div class="step-title">Good / Better / Best quote</div>
-            <div class="step-body">Three material tiers, one scope of work. You pick the product level — the labour and process don't change. No hidden surprises when you choose the middle option.</div>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">03</div>
-          <div>
-            <div class="step-title">SCRIPT — our production method</div>
-            <div class="step-body">Every install follows our stage-gated workflow: substrate check, layout, cut list, install, punch, turnover. No skipped steps, no "we'll get to that later."</div>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">04</div>
-          <div>
-            <div class="step-title">Turnover — your home, better than you left it</div>
-            <div class="step-body">Photo documentation, warranty package, and a clean site. We don't leave until it's done. You'll know because you'll have the photos to prove it.</div>
-          </div>
-        </div>
-      </div>
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Hooomz Interiors &middot; Southern New Brunswick</div>
+    <h1 class="hero-h1">
+      Floors.<br>
+      Paint.<br>
+      Trim.<br>
+      <span class="light">Done right.</span>
+    </h1>
+    <div class="hero-divider"></div>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-body">Interior finishing built on 20+ years of trade experience. Three-tier pricing, every job documented, and a permanent record of every material in your home.</p>
+    <div class="hero-ctas">
+      <a href="tel:+15065885585" class="btn-primary">
+        Book a Discovery Call
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="https://hooomz.ca" class="btn-outline" target="_blank" rel="noopener">How It Works</a>
     </div>
+  </div>
+</section>
 
-    <div class="how-visual reveal">
-      <div class="how-visual-box">
-        <!-- Stylised isometric room illustration -->
-        <svg class="room-svg" viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="floorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#2A2520"/>
-              <stop offset="100%" stop-color="#1A1713"/>
-            </linearGradient>
-            <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#32302C"/>
-              <stop offset="100%" stop-color="#252220"/>
-            </linearGradient>
-            <linearGradient id="wallRGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#1E1C18"/>
-              <stop offset="100%" stop-color="#2A2520"/>
-            </linearGradient>
-          </defs>
-          <!-- back wall -->
-          <path d="M 60 80 L 360 80 L 360 340 L 60 340 Z" fill="url(#wallGrad)"/>
-          <!-- right wall -->
-          <path d="M 360 80 L 420 140 L 420 400 L 360 340 Z" fill="url(#wallRGrad)"/>
-          <!-- floor -->
-          <path d="M 60 340 L 360 340 L 420 400 L 120 400 Z" fill="url(#floorGrad)"/>
-          <!-- floor boards -->
-          <line x1="60" y1="355" x2="360" y2="355" stroke="#524C45" strokeWidth=".7" opacity=".4"/>
-          <line x1="60" y1="370" x2="360" y2="370" stroke="#524C45" strokeWidth=".7" opacity=".4"/>
-          <line x1="60" y1="385" x2="360" y2="385" stroke="#524C45" strokeWidth=".7" opacity=".4"/>
-          <!-- baseboard -->
-          <line x1="60" y1="338" x2="360" y2="338" stroke="#A07355" strokeWidth="2" opacity=".5"/>
-          <!-- window back wall -->
-          <rect x="140" y="110" width="140" height="100" rx="1" fill="#1A1713" opacity=".8"/>
-          <rect x="144" y="114" width="132" height="92" rx="1" fill="#2A4060" opacity=".5"/>
-          <!-- window cross -->
-          <line x1="210" y1="114" x2="210" y2="206" stroke="#524C45" strokeWidth="1" opacity=".6"/>
-          <line x1="144" y1="160" x2="276" y2="160" stroke="#524C45" strokeWidth="1" opacity=".6"/>
-          <!-- door right wall -->
-          <path d="M 375 200 L 415 240 L 415 395 L 375 355 Z" fill="#141210"/>
-          <!-- baseboard right -->
-          <line x1="360" y1="338" x2="420" y2="398" stroke="#A07355" strokeWidth="1.5" opacity=".4"/>
-          <!-- laser measure line -->
-          <line x1="80" y1="350" x2="340" y2="350" stroke="#C94F3E" strokeWidth="1" strokeDasharray="4 3" opacity=".7"/>
-          <circle cx="80" cy="350" r="3" fill="#C94F3E" opacity=".8"/>
-          <circle cx="340" cy="350" r="3" fill="#C94F3E" opacity=".8"/>
-          <!-- dimension label -->
-          <rect x="175" y="355" width="70" height="16" rx="2" fill="#1A1713" opacity=".9"/>
-          <text x="210" y="366" text-anchor="middle" fontFamily="monospace" fontSize="8" fill="#C94F3E" opacity=".9">14' 2½"</text>
-          <!-- scan grid dots -->
-          {[0,1,2,3,4].map((i) => [0,1,2,3].map((j) => (
-            <circle key={`${i}${j}`} cx={100+i*60} cy={100+j*60} r="1.5" fill="#4A7FA5" opacity=".25"/>
-          )))}
-          <!-- small logo in corner -->
-          <text x="72" y="100" fontFamily="'Josefin Sans',sans-serif" fontSize="11" fontWeight="700" letterSpacing="3" fill="#524C45" opacity=".5">HOO<tspan fill="#C94F3E" opacity=".6">O</tspan>MZ</text>
+<!-- ============================================================
+     PROOF STRIP
+     ============================================================ -->
+<section class="proof-strip">
+  <div class="proof-item">
+    <div class="proof-value">20+</div>
+    <div class="proof-label">Years of trade experience</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-value">3</div>
+    <div class="proof-label">Tier pricing &mdash; Good, Better, Best</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-value">1</div>
+    <div class="proof-label">LiDAR site visit delivers all three quotes</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-value">&infin;</div>
+    <div class="proof-label">Hooomz Passport &mdash; your home record, forever</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES SECTION
+     ============================================================ -->
+<section class="services-section" id="services">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">What We Do</div>
+      <h2 class="section-headline">Every finish, under<br>one process.</h2>
+    </div>
+    <p class="section-body-right">Flooring, paint, trim, and specialty finishes &mdash; all managed through the same documented system, every time.</p>
+  </div>
+  <div class="services-grid">
+
+    <!-- Flooring -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 28 28" fill="none" stroke="#1A1714" stroke-width="1.5" stroke-linecap="round">
+          <!-- Herringbone parquet: block A (diagonal /) -->
+          <line x1="3" y1="5" x2="7" y2="1"/><line x1="5" y1="7" x2="9" y2="3"/><line x1="7" y1="9" x2="11" y2="5"/>
+          <!-- block B (diagonal \) -->
+          <line x1="11" y1="1" x2="15" y2="5"/><line x1="13" y1="3" x2="17" y2="7"/><line x1="15" y1="5" x2="19" y2="9"/>
+          <!-- block C (/) -->
+          <line x1="19" y1="5" x2="23" y2="1"/><line x1="21" y1="7" x2="25" y2="3"/><line x1="23" y1="9" x2="27" y2="5"/>
+          <!-- row 2 block A (\) -->
+          <line x1="3" y1="9" x2="7" y2="13"/><line x1="5" y1="11" x2="9" y2="15"/><line x1="7" y1="13" x2="11" y2="17"/>
+          <!-- row 2 block B (/) -->
+          <line x1="11" y1="17" x2="15" y2="13"/><line x1="13" y1="15" x2="17" y2="11"/><line x1="15" y1="13" x2="19" y2="9"/>
+          <!-- row 2 block C (\) -->
+          <line x1="19" y1="9" x2="23" y2="13"/><line x1="21" y1="11" x2="25" y2="15"/><line x1="23" y1="13" x2="27" y2="17"/>
+          <!-- row 3 block A (/) -->
+          <line x1="3" y1="21" x2="7" y2="17"/><line x1="5" y1="23" x2="9" y2="19"/><line x1="7" y1="25" x2="11" y2="21"/>
+          <!-- row 3 block B (\) -->
+          <line x1="11" y1="17" x2="15" y2="21"/><line x1="13" y1="19" x2="17" y2="23"/><line x1="15" y1="21" x2="19" y2="25"/>
+          <!-- row 3 block C (/) -->
+          <line x1="19" y1="25" x2="23" y2="21"/><line x1="21" y1="23" x2="25" y2="19"/><line x1="23" y1="21" x2="27" y2="17"/>
         </svg>
       </div>
-      <div class="how-tag">
-        <div class="how-tag-val">~45 min</div>
-        <div class="how-tag-label">Avg. site visit</div>
+      <div class="service-name">Flooring</div>
+      <p class="service-desc">LVP, hardwood, and tile. Rooms measured precisely before anything is ordered &mdash; substrate conditions inspected and resolved before the first plank goes down.</p>
+      <div class="service-tags">
+        <span class="service-tag">LVP</span>
+        <span class="service-tag">Hardwood</span>
+        <span class="service-tag">Tile</span>
+      </div>
+    </div>
+
+    <!-- Interior Paint -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 28 28">
+          <!-- Organic paint swatch blob - filled, no stroke -->
+          <path d="M9.5 3.5c-2 .8-3.8 2.8-4.2 5.5-.4 2.8.6 5.2 2.5 7 1.6 1.5 3.8 2.6 6.2 2.8 2.5.2 5-.3 7-1.8 2.2-1.6 3.2-4 2.8-6.5-.4-2.2-1.8-4-3.8-5.2-1.8-1.1-3.8-1.6-5.8-1.8-1.5-.2-3.2-.1-4.7 0z" fill="#1A1714" stroke="none"/>
+        </svg>
+      </div>
+      <div class="service-name">Interior Paint</div>
+      <p class="service-desc">The right sheen for the right surface &mdash; flat for ceilings, eggshell for walls, semi-gloss for trim and doors. Full prep, two coats, clean lines. Every colour recorded in your Passport.</p>
+      <div class="service-tags">
+        <span class="service-tag">Walls</span>
+        <span class="service-tag">Ceilings</span>
+        <span class="service-tag">Trim</span>
+      </div>
+    </div>
+
+    <!-- Trim & Millwork -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 28 28" fill="none" stroke="#1A1714" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Outer casing frame -->
+          <rect x="3" y="1.5" width="22" height="25"/>
+          <!-- Header molding -->
+          <line x1="3" y1="4.5" x2="25" y2="4.5"/>
+          <!-- Door opening -->
+          <rect x="7" y="4.5" width="14" height="19.5"/>
+          <!-- Upper raised panel -->
+          <rect x="9.5" y="7" width="9" height="7" rx="0.5"/>
+          <!-- Lower raised panel -->
+          <rect x="9.5" y="16" width="9" height="5.5" rx="0.5"/>
+          <!-- Door knob -->
+          <circle cx="20" cy="16" r="0.9"/>
+          <!-- Threshold line -->
+          <line x1="5" y1="26.5" x2="23" y2="26.5"/>
+        </svg>
+      </div>
+      <div class="service-name">Trim &amp; Millwork</div>
+      <p class="service-desc">Clean lines where walls meet floors and doors meet walls. Baseboard, casing, and interior door installations done to a consistent standard &mdash; properly fitted and finished.</p>
+      <div class="service-tags">
+        <span class="service-tag">Baseboard</span>
+        <span class="service-tag">Casing</span>
+        <span class="service-tag">Interior Doors</span>
+      </div>
+    </div>
+
+    <!-- Feature Walls -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 28 28" fill="none" stroke="#1A1714" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Outer frame -->
+          <rect x="2" y="2" width="24" height="24"/>
+          <!-- Grid dividers -->
+          <line x1="14" y1="2" x2="14" y2="26"/>
+          <line x1="2" y1="14" x2="26" y2="14"/>
+          <!-- Inset panels -->
+          <rect x="4.5" y="4.5" width="7" height="7"/>
+          <rect x="16.5" y="4.5" width="7" height="7"/>
+          <rect x="4.5" y="16.5" width="7" height="7"/>
+          <rect x="16.5" y="16.5" width="7" height="7"/>
+          <!-- Diamond insets -->
+          <path d="M8 5.5L9.5 8 8 10.5 6.5 8z"/>
+          <path d="M20 5.5L21.5 8 20 10.5 18.5 8z"/>
+          <path d="M8 17.5L9.5 20 8 22.5 6.5 20z"/>
+          <path d="M20 17.5L21.5 20 20 22.5 18.5 20z"/>
+        </svg>
+      </div>
+      <div class="service-name">Feature Walls</div>
+      <p class="service-desc">One wall that changes how a room reads. Board and batten, shiplap, wainscoting, and wallpaper &mdash; substrate prepped properly so the finish lasts.</p>
+      <div class="service-tags">
+        <span class="service-tag">Board &amp; Batten</span>
+        <span class="service-tag">Wainscoting</span>
+        <span class="service-tag">Wallpaper</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST SECTION
+     ============================================================ -->
+<section class="trust-section" id="about">
+  <div class="trust-grid">
+    <div class="trust-left">
+      <div class="trust-eyebrow">Who's On Your Job</div>
+      <h2 class="trust-quote">Any contractor can do the work. <em>Almost none of them can tell you what they used three years later.</em></h2>
+      <p class="trust-body">Every Hooomz job closes with a Passport &mdash; a permanent record of every material, colour, warranty, and photo. It's yours to keep, forever. Not on a contractor's server. Not locked behind an app. Yours.</p>
+      <div class="trust-creds">
+        <div class="trust-cred">
+          <div class="trust-cred-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="5" r="3.5"/>
+              <path d="M2 16c0-3.5 3.1-5.5 7-5.5s7 2 7 5.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="trust-cred-title">20+ years of trade experience</div>
+            <div class="trust-cred-sub">Residential finishing &mdash; Southern New Brunswick</div>
+          </div>
+        </div>
+        <div class="trust-cred">
+          <div class="trust-cred-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="2" width="12" height="14" rx="1.5"/>
+              <line x1="6" y1="6" x2="12" y2="6"/>
+              <line x1="6" y1="9" x2="12" y2="9"/>
+              <line x1="6" y1="12" x2="10" y2="12"/>
+            </svg>
+          </div>
+          <div>
+            <div class="trust-cred-title">Documented to a standard</div>
+            <div class="trust-cred-sub">3 trade programs &middot; 30 modules &middot; 81 SOPs on every job</div>
+          </div>
+        </div>
+        <div class="trust-cred">
+          <div class="trust-cred-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 1.5c0 0-5.5 4-5.5 9a5.5 5.5 0 0 0 11 0c0-5-5.5-9-5.5-9z"/>
+              <circle cx="9" cy="10.5" r="1.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="trust-cred-title">Moncton &middot; Fredericton &middot; Saint John</div>
+            <div class="trust-cred-sub">Serving Greater Southern New Brunswick</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-right">
+      <div class="passport-card">
+        <div class="passport-header">
+          <div class="passport-header-label">Hooomz Passport</div>
+          <div class="passport-header-id">J-2024-019</div>
+        </div>
+        <div class="passport-score">
+          <div class="passport-score-value">90</div>
+          <div>
+            <div class="passport-score-label">Home Health &mdash; Excellent</div>
+            <div class="passport-score-addr">Arsenault Residence / 47 Rosslyn Dr &middot; Moncton NB</div>
+          </div>
+        </div>
+        <div class="passport-rows">
+          <div class="passport-row">
+            <div class="passport-row-label">Flooring</div>
+            <div class="passport-row-value">
+              <div class="passport-row-main">Cortec Pro Plus</div>
+              <div class="passport-row-sub">Better Tier &middot; 25 yr warranty</div>
+            </div>
+          </div>
+          <div class="passport-row">
+            <div class="passport-row-label">Wall Paint</div>
+            <div class="passport-row-value">
+              <div class="passport-row-main">Agreeable Gray</div>
+              <div class="passport-row-sub">Eggshell &middot; All rooms</div>
+            </div>
+          </div>
+          <div class="passport-row">
+            <div class="passport-row-label">Trim Paint</div>
+            <div class="passport-row-value">
+              <div class="passport-row-main">White Dove</div>
+              <div class="passport-row-sub">Semi-Gloss &middot; All trim</div>
+            </div>
+          </div>
+          <div class="passport-row">
+            <div class="passport-row-label">Baseboard</div>
+            <div class="passport-row-value">
+              <div class="passport-row-main">4&frac12;" Colonial</div>
+              <div class="passport-row-sub">Casing: 2&frac34;" Flat</div>
+            </div>
+          </div>
+          <div class="passport-row">
+            <div class="passport-row-label">Completed</div>
+            <div class="passport-row-value">
+              <div class="passport-row-main">April 3, 2025</div>
+              <div class="passport-row-sub">1,240 sq ft &middot; $18,400</div>
+            </div>
+          </div>
+        </div>
+        <div class="passport-footer">
+          <div class="passport-footer-text">Generated by Hooomz Labs &middot; Moncton NB</div>
+          <div class="passport-footer-dot"></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── HONEST SECTION ── -->
-<section class="honest-section" id="honest">
-  <div class="honest-grid">
-    <div class="reveal">
-      <div class="eyebrow" style="color:var(--clay);">
-        <span style="background:var(--clay);display:block;width:24px;height:1px;"></span>
-        Straight talk
-      </div>
-      <h2 class="honest-headline">
-        We launched<br/>
-        in <em>2026.</em><br/>
-        Here's why<br/>
-        that matters.
-      </h2>
-    </div>
-    <div class="reveal">
-      <p class="honest-body">
-        We're not going to pretend we've done a thousand jobs.
-        <strong>We haven't.</strong> What we have is 22 years of trade experience,
-        a Red Seal certification, and a process we built from scratch
-        because the way most renovations are run — the miscommunication,
-        the no-shows, the "we'll fix that before we go" — wasn't good enough.
-      </p>
-
-      <div class="honest-pull">
-        "New doesn't mean unqualified. It means we haven't had time to develop bad habits."
-      </div>
-
-      <p class="honest-body">
-        Hooomz Interiors was designed before it was launched.
-        The measurement system, the quoting process, the production workflow —
-        all of it exists before your project does.
-        <strong>You're not a beta tester. You're our first proof of concept.</strong>
-      </p>
-
-      <ul class="honest-list" style="margin-top:28px;">
-        <li>Every job is documented start to finish — photos, measurements, cut lists</li>
-        <li>We tell you what we see on the site visit, even if it complicates the quote</li>
-        <li>If we can't do it right, we'll tell you before we start, not halfway through</li>
-        <li>Being new means we want every job to be a reference — we need yours to be good</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ── WHO WE'RE FOR ── -->
-<section class="who-section" id="who">
-  <div style="text-align:center; max-width:640px; margin:0 auto;">
-    <div class="eyebrow reveal" style="justify-content:center;">Who we're for</div>
-    <h2 class="section-headline reveal" style="margin-bottom:16px;">
-      Three kinds of clients.<br/><em>One standard of work.</em>
-    </h2>
-    <p class="section-body reveal">
-      Whether you're a homeowner, a contractor looking for a trusted sub, or
-      a builder who needs reliable finishing — the process is the same.
-      The work doesn't change based on who's writing the cheque.
-    </p>
-  </div>
-
-  <div class="audience-grid">
-    <div class="audience-card card-homeowner reveal">
-      <div class="audience-icon">⌂</div>
-      <div class="audience-title">Homeowners</div>
-      <div class="audience-body">
-        You want a renovated space, not a renovation experience.
-        We handle the measuring, the material options, the scheduling,
-        and the cleanup. You make decisions — we handle the rest.
-        No contractor phone tag, no mystery invoices.
-      </div>
-      <a href="#book" class="audience-link">Book a site visit</a>
-    </div>
-
-    <div class="audience-card card-trade reveal">
-      <div class="audience-icon">◈</div>
-      <div class="audience-title">Contractors & Builders</div>
-      <div class="audience-body">
-        Need a finishing sub who shows up, documents their work,
-        and doesn't create callbacks? We're Red Seal certified,
-        process-driven, and building a reputation here in Moncton.
-        We want your jobs to go well as much as you do.
-      </div>
-      <a href="#book" class="audience-link">Talk trade terms</a>
-    </div>
-
-    <div class="audience-card card-builder reveal">
-      <div class="audience-icon">⊞</div>
-      <div class="audience-title">Referral Partners</div>
-      <div class="audience-body">
-        If you're in the trades, at a supply house, or work with
-        homeowners who need finishing work — we'd rather earn a referral
-        by doing good work than by running a discount. Let's talk.
-      </div>
-      <a href="#book" class="audience-link">Let's connect</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICES ── -->
-<section class="services-section" id="services">
-  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px; flex-wrap:wrap; gap:20px;">
+<!-- ============================================================
+     PROCESS SECTION
+     ============================================================ -->
+<section class="process-section" id="process">
+  <div class="section-header">
     <div>
-      <div class="eyebrow reveal">What we do</div>
-      <h2 class="section-headline reveal">Services</h2>
+      <div class="eyebrow">How We Work</div>
+      <h2 class="section-headline">Six stages. Every job.<br>No exceptions.</h2>
     </div>
-    <p class="section-body reveal" style="max-width:380px; margin-bottom:0;">
-      Interior finishing in Greater Moncton.
-      Every service includes a site visit, a written quote, and a production checklist.
-    </p>
+    <p class="section-body-right">SCRIPT is the production method we run on every renovation &mdash; so nothing gets skipped, no surprises get buried, and turnover is clean.</p>
   </div>
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-ghost">S</div>
+      <div class="process-step">Step 01</div>
+      <div class="process-name">Shield</div>
+      <p class="process-desc">Surface protection placed, existing finishes documented. Nothing moves without substrate sign-off.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-ghost">C</div>
+      <div class="process-step">Step 02</div>
+      <div class="process-name">Clear</div>
+      <p class="process-desc">Demo and removal. Substrate issues flagged immediately &mdash; no surprises buried under new floors.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-ghost">R</div>
+      <div class="process-step">Step 03</div>
+      <div class="process-name">Ready</div>
+      <p class="process-desc">Layout confirmed, materials staged and verified before installation begins.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-ghost">I</div>
+      <div class="process-step">Step 04</div>
+      <div class="process-name">Install</div>
+      <p class="process-desc">Daily progress logged, photos documented by room. You can see it happen in real time.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-ghost">P</div>
+      <div class="process-step">Step 05</div>
+      <div class="process-name">Punch</div>
+      <p class="process-desc">Full walkthrough, every open item tracked. Room-by-room sign-off. You're invited to join.</p>
+    </div>
+    <div class="process-card">
+      <div class="process-ghost">T</div>
+      <div class="process-step">Step 06</div>
+      <div class="process-name">Turnover</div>
+      <p class="process-desc">Warranty docs delivered, care guide issued, Passport generated. Closed when all items resolved.</p>
+    </div>
+  </div>
+</section>
 
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01 — Flooring</div>
-      <div class="service-title">LVP, Hardwood & Tile</div>
-      <div class="service-body">Laser-measured layouts, joint-aware cut lists, proper substrate prep. We don't float over problems — we fix them first.</div>
-      <div class="service-tags">
-        <span class="tag">LVP</span>
-        <span class="tag">Hardwood</span>
-        <span class="tag">Tile</span>
-        <span class="tag">Subfloor prep</span>
+<!-- ============================================================
+     FINAL CTA SECTION
+     ============================================================ -->
+<section class="cta-section">
+  <div class="cta-grid">
+    <div class="cta-left">
+      <div class="eyebrow">Ready to Start</div>
+      <h2 class="cta-headline">One visit. Three quotes.<br>You choose.</h2>
+      <p class="cta-body">Book a 15-minute discovery call. We'll discuss your scope, timeline, and budget &mdash; then schedule one LiDAR site visit that covers every room and delivers all three tier quotes.</p>
+      <div class="cta-buttons">
+        <a href="tel:+15065885585" class="btn-green">Book a Discovery Call</a>
+        <a href="https://hooomz.ca" class="btn-outline" target="_blank" rel="noopener">See Full Details</a>
       </div>
     </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">02 — Painting</div>
-      <div class="service-title">Interior Paint & Specialty</div>
-      <div class="service-body">Walls, ceilings, trim. Microcement and limewash for specialty finishes. Prep done properly — no roller marks, no holidays.</div>
-      <div class="service-tags">
-        <span class="tag">Interior walls</span>
-        <span class="tag">Trim</span>
-        <span class="tag">Microcement</span>
-        <span class="tag">Limewash</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal">
-      <div class="service-num">03 — Trim & Millwork</div>
-      <div class="service-title">Baseboards, Casings & Built-ins</div>
-      <div class="service-body">Red Seal carpentry. Scribe fits, coped joints, mitre reveals that actually line up. Custom millwork scoped on request.</div>
-      <div class="service-tags">
-        <span class="tag">Baseboard</span>
-        <span class="tag">Casing</span>
-        <span class="tag">Built-ins</span>
-        <span class="tag">Crown</span>
+    <div class="cta-right">
+      <div class="cta-dark-card">
+        <div class="cta-dark-label">What happens next</div>
+        <h3 class="cta-dark-headline">From call to quote in one site visit.</h3>
+        <div class="cta-steps">
+          <div class="cta-step">
+            <div class="cta-step-num">1</div>
+            <div class="cta-step-text"><strong>Discovery call</strong> &mdash; 15 minutes. Tell us your scope and timeline.</div>
+          </div>
+          <div class="cta-step">
+            <div class="cta-step-num">2</div>
+            <div class="cta-step-text"><strong>LiDAR site visit</strong> &mdash; we measure every room precisely. One visit covers all three tiers.</div>
+          </div>
+          <div class="cta-step">
+            <div class="cta-step-num">3</div>
+            <div class="cta-step-text"><strong>Formal quote delivered</strong> &mdash; Good, Better, and Best. You pick what fits your budget and vision.</div>
+          </div>
+          <div class="cta-step">
+            <div class="cta-step-num">4</div>
+            <div class="cta-step-text"><strong>Contract signed</strong> &mdash; work begins on schedule. SCRIPT keeps you informed at every stage.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PROCESS TRACK ── -->
-<section class="process-section">
-  <div style="text-align:center; margin-bottom:8px;">
-    <div class="eyebrow reveal" style="justify-content:center;">The SCRIPT method</div>
-    <h2 class="section-headline reveal" style="margin-bottom:12px;">
-      Every job. <em>Every time.</em>
-    </h2>
-    <p class="section-body reveal" style="max-width:560px; margin:0 auto;">
-      SCRIPT is our production methodology. Six stages, no skipped steps.
-      You'll always know which stage your project is in.
-    </p>
-  </div>
-
-  <div class="process-track">
-    <div class="process-step reveal">
-      <div class="process-dot">S</div>
-      <div class="process-step-title">Shield</div>
-      <div class="process-step-body">Protect surfaces, contain the work area, and confirm substrate is ready</div>
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-dots">
+          <div class="footer-logo-dot" style="background:#DC2626"></div>
+          <div class="footer-logo-dot" style="background:#D97706"></div>
+          <div class="footer-logo-dot" style="background:#16A34A"></div>
+        </div>
+        <div class="footer-brand">HOOOMZ</div>
+      </div>
+      <p class="footer-tagline">Interior finishing, built on trade.</p>
+      <p class="footer-copy">&copy; 2026 Hooomz. All rights reserved.</p>
     </div>
-    <div class="process-step reveal">
-      <div class="process-dot">C</div>
-      <div class="process-step-title">Clear</div>
-      <div class="process-step-body">Remove existing material and address any subfloor or substrate issues</div>
+    <div style="display:flex;gap:48px;" class="footer-links-wrap">
+      <div>
+        <div class="footer-links-title">Services</div>
+        <a href="#services" class="footer-link">Flooring</a>
+        <a href="#services" class="footer-link">Paint</a>
+        <a href="#services" class="footer-link">Trim</a>
+        <a href="#services" class="footer-link">Feature Walls</a>
+      </div>
+      <div>
+        <div class="footer-links-title">Company</div>
+        <a href="#process" class="footer-link">Process</a>
+        <a href="#about" class="footer-link">About</a>
+        <a href="tel:+15065885585" class="footer-link">Contact</a>
+      </div>
     </div>
-    <div class="process-step reveal">
-      <div class="process-dot">R</div>
-      <div class="process-step-title">Ready</div>
-      <div class="process-step-body">Layout lines, cut list confirmed, material staged and acclimated</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-dot">I</div>
-      <div class="process-step-title">Install</div>
-      <div class="process-step-body">The main event — executed to the cut list, no improvisation</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-dot">P</div>
-      <div class="process-step-title">Punch</div>
-      <div class="process-step-body">Walk the job, document every item, close every open issue before leaving</div>
-    </div>
-    <div class="process-step reveal">
-      <div class="process-dot">T</div>
-      <div class="process-step-title">Turnover</div>
-      <div class="process-step-body">Photos, warranty package, clean site. Your home back — better than we found it</div>
+    <div class="footer-right-info">
+      Moncton &middot; Fredericton &middot; Saint John<br>
+      <a href="tel:+15065885585">506-588-5585</a><br><br>
+      Hooomz Labs &middot; Independent Materials Testing
     </div>
   </div>
-</section>
-
-<!-- ── CTA ── -->
-<section class="cta-section" id="book">
-  <div class="cta-eyebrow">Ready to start</div>
-  <h2 class="cta-headline">
-    Let's see<br/>
-    your <em>space.</em>
-  </h2>
-  <p class="cta-sub">
-    A site visit is free, takes about 45 minutes, and leaves you with
-    a full measurement package and a three-tier quote.
-    No pressure. No deposit. Just a conversation.
-  </p>
-  <a href="mailto:hello@hooomz.ca" class="btn-primary" style="font-size:13px; padding:18px 44px;">
-    Book Your Site Visit
-  </a>
-  <div class="cta-note">Greater Moncton, NB · hooomz.ca · hello@hooomz.ca</div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="nav-logo">
-    <div class="wordmark">
-      H<span class="o-r">O</span><span class="o-y">O</span><span class="o-g">O</span>MZ
-    </div>
-    <div class="sub-brand">Interiors · Moncton, NB</div>
-  </div>
-  <ul class="footer-links">
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#who">Who we're for</a></li>
-    <li><a href="#book">Book a visit</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Hooomz Interiors. All rights reserved.</div>
+  <div class="footer-divider"></div>
 </footer>
 
+<!-- ============================================================
+     JS
+     ============================================================ -->
 <script>
-  // Nav scroll behaviour
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        // stagger siblings
-        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
-        const idx = siblings.indexOf(entry.target);
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, idx * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  reveals.forEach(el => observer.observe(el));
+function toggleMobileMenu() {
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('navMobileMenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('navHamburger').classList.remove('open');
+  document.getElementById('navMobileMenu').classList.remove('open');
+}
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) closeMobileMenu();
+});
 </script>
+
 </body>
 </html>
